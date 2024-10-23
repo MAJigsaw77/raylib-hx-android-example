@@ -20,16 +20,16 @@
 		android:allowBackup="true"
 		android:hardwareAccelerated="true"
 		android:allowNativeHeapPointerTagging="false"
-		android:appCategory="game"
-		android:clearTaskOnLaunch="true">
+		android:appCategory="game">
 
 		<activity
 			android:name="NativeLoader"
-			android:exported="true"
-			android:launchMode="singleTask"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation"
 			android:screenOrientation="${APP_ORIENTATION}"
-			android:resizeableActivity="false">
+			android:launchMode="singleTask"
+			android:resizeableActivity="false"
+			android:clearTaskOnLaunch="true"
+			android:exported="true">
 
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
