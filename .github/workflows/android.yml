@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   Build:
-    runs-on: macos-latest
+    runs-on: linux-latest
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -32,4 +32,3 @@ jobs:
           name: androidBuild
           path: project/app/build/outputs/apk/debug
           if-no-files-found: warn
-  
