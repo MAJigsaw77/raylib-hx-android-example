@@ -28,7 +28,6 @@
 			android:screenOrientation="${APP_ORIENTATION}"
 			android:launchMode="singleTask"
 			android:resizeableActivity="false"
-			android:clearTaskOnLaunch="true"
 			android:exported="true">
 
 			<intent-filter>
