@@ -43,14 +43,14 @@ class Tools
 		{
 			Sys.println(ANSI.apply('ANDROID_NDK_ROOT is not set, searching for NDK...', [Yellow]));
 
-			switch (Sys.systemName)
+			switch (Sys.systemName())
 			{
-				case 'Windows':
+				case sys if (new EReg("window", "i").match(sys)):
 					Sys.println(ANSI.apply('Please set ANDROID_NDK_ROOT manually.', [Red]));
 					Sys.exit(1);
-				case 'Mac':
+				case sys if (new EReg("mac", "i").match(sys)):
 					NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Library/Android/sdk/ndk']);
-				case 'Linux':
+				case sys if (new EReg("linux", "i").match(sys)):
 					if (FileSystem.exists(Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk'])))
 						NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk']);
 					else if (FileSystem.exists('/usr/local/android-ndk'))
@@ -66,7 +66,7 @@ class Tools
 			}
 		}
 
-        if (NDK_DIR != null)
-            Sys.println(ANSI.apply('Using Android NDK at $ndkPath', [Green]));
+		if (NDK_DIR != null)
+			Sys.println(ANSI.apply('Using Android NDK at $NDK_DIR', [Green]));
 	}
 }
