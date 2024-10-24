@@ -1,5 +1,6 @@
 package;
 
+import hxp.HXML;
 import haxe.io.Path;
 import sys.FileSystem;
 
@@ -20,6 +21,16 @@ class Runner
 			{
 				case 'build':
 					setupNDK();
+
+					if (!FileSystem.exists(Path.join([runDir, 'build.hxml'])))
+					{
+						Sys.println(ANSI.apply('Unable to find "build.hxml" necessary for building process.', [Red]));
+						Sys.exit(1);
+					}
+
+					final buildFile:HXML = HXML.fromFile(Path.join([runDir, 'build.hxml']));
+
+					Sys.println(ANSI.apply(buildFile.toString(), [Red]));
 				default:
 					Sys.println(ANSI.apply('Unknown command ', [Red]) + ANSI.apply(command, [Italic, Red]) + ANSI.apply('...', [Red]));
 					Sys.exit(1);
