@@ -13,13 +13,13 @@ class Tools
 
         if (command != null)
         {
-            Sys.println(ANSI.apply('Running command $command...', [Red, Bold]));
+            Sys.println(ANSI.apply('Running command ', [Red]) + ANSI.apply(command, [Underline, Red]) + ANSI.apply('...', [Red]));
 
             switch (command)
             {
                 // case 'build':
                 default:
-                    Sys.println(ANSI.apply('Unknown command ', [Red]) + ANSI.apply(command, [Strikethrough]) + ANSI.apply('...', [Red]));
+                    Sys.println(ANSI.apply('Unknown command ', [Red]) + ANSI.apply(command, [Underline, Red]) + ANSI.apply('...', [Red]));
                     Sys.exit(1);
             }
         }
