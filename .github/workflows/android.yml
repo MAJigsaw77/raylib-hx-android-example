@@ -16,21 +16,20 @@ jobs:
           haxe-version: latest
 
       - name: Rebuild tools
-        run: haxe rebuild.hxml
+        run: haxelib install hxp --quiet && haxe rebuild.hxml
 
       - name: Testing
-        run: |
-          haxelib dev raymob-hx .
-          haxelib run raymob-hx build shit idk
-
-      - name: Compiling
         run: |
           haxelib git raylib-hx https://github.com/foreignsasquatch/raylib-hx.git --quiet --skip-dependencies
           haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp.git --quiet
           cd $(haxelib libpath hxcpp)/tools/hxcpp
           haxe compile.hxml
           cd ${{github.workspace}}
-          chmod +x ./build.sh && ./build.sh
+          haxelib dev raymob-hx .
+          haxelib run raymob-hx build arm64 armv7 x86 x86_64
+
+      - name: Compiling
+        run: |
         env:
           JAVA_HOME: ${{ env.JAVA_HOME_17_X64 }}
 
