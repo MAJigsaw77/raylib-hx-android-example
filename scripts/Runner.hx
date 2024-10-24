@@ -15,7 +15,7 @@ class Runner
 		final runDir:Null<String> = args.pop();
 		final command:Null<String> = args.shift();
 
-		if (command != null)
+		if (runDir != null && command != null)
 		{
 			switch (command)
 			{
