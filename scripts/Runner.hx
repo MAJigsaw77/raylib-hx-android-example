@@ -5,7 +5,7 @@ import sys.FileSystem;
 import ANSI;
 
 @:nullSafety
-class Tools
+class Runner
 {
 	private static var NDK_DIR:Null<String> = null;
 
