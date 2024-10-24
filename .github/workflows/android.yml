@@ -15,6 +15,9 @@ jobs:
         with:
           haxe-version: latest
 
+      - name: Rebuild tools
+        run: haxe rebuild.hxml
+
       - name: Compiling
         run: |
           haxelib git raylib-hx https://github.com/foreignsasquatch/raylib-hx.git --quiet --skip-dependencies
