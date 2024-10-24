@@ -4,6 +4,8 @@ class Tools
 {
     public static function main():Void
     {
-        Sys.println(Sys.args());
+        final args:Array<String> = Sys.args();
+
+        Sys.println(args);
     }
 }
