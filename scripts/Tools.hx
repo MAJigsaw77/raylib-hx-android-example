@@ -1,32 +1,72 @@
 package;
 
+import haxe.io.Path;
+import sys.FileSystem;
 import ANSI;
 
 @:nullSafety
 class Tools
 {
-    public static function main():Void
-    {
-        final args:Array<String> = Sys.args();
-        final command:Null<String> = args.shift();
-        final runDir:Null<String> = args.pop();
+	private static var NDK_DIR:Null<String> = null;
 
-        if (command != null)
-        {
-            Sys.println(ANSI.apply('Running command ', [Red]) + ANSI.apply(command, [Italic, Red]) + ANSI.apply('...', [Red]));
+	public static function main():Void
+	{
+		final args:Array<String> = Sys.args();
+		final command:Null<String> = args.shift();
+		final runDir:Null<String> = args.pop();
 
-            switch (command)
-            {
-                // case 'build':
-                default:
-                    Sys.println(ANSI.apply('Unknown command ', [Red]) + ANSI.apply(command, [Italic, Red]) + ANSI.apply('...', [Red]));
-                    Sys.exit(1);
-            }
-        }
+		if (command != null)
+		{
+			switch (command)
+			{
+				case 'build':
+					setupNDK();
 
-        if (runDir != null)
-            Sys.println(ANSI.apply(runDir, [Blue, Underline]));
+					Sys.exit(0);
+				default:
+					Sys.println(ANSI.apply('Unknown command ', [Red]) + ANSI.apply(command, [Italic, Red]) + ANSI.apply('...', [Red]));
+					Sys.exit(1);
+			}
+		}
 
-        Sys.println(ANSI.apply(args.toString(), [Green, Underline]));
-    }
+		if (runDir != null)
+			Sys.println(ANSI.apply(runDir, [Blue, Underline]));
+
+		Sys.println(ANSI.apply(args.toString(), [Green, Underline]));
+	}
+
+	private static function setupNDK():Void
+	{
+		NDK_DIR = Sys.getEnv('ANDROID_NDK_ROOT');
+
+		if (NDK_DIR == null)
+		{
+			Sys.println(ANSI.apply('ANDROID_NDK_ROOT is not set, searching for NDK...', [Yellow]));
+
+			switch (Sys.systemName)
+			{
+				case 'Windows':
+					Sys.println(ANSI.apply('Please set ANDROID_NDK_ROOT manually.', [Red]));
+					Sys.exit(1);
+				case 'Mac':
+					NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Library/Android/sdk/ndk']);
+				case 'Linux':
+					if (FileSystem.exists(Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk'])))
+						NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk']);
+					else if (FileSystem.exists('/usr/local/android-ndk'))
+						NDK_DIR = '/usr/local/android-ndk';
+					else
+					{
+						Sys.println(ANSI.apply('Could not find the Android NDK automatically. Please set ANDROID_NDK_ROOT.', [Red]));
+						Sys.exit(1);
+					}
+				default:
+					Sys.println(ANSI.apply('Unsupported OS. Please set ANDROID_NDK_ROOT manually.', [Red]));
+					Sys.exit(1);
+			}
+		}
+
+        if (NDK_DIR != null)
+            Sys.println(ANSI.apply('Using Android NDK at $ndkPath', [Green]));
+	}
 }
