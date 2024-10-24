@@ -12,7 +12,17 @@ class Tools
         final runDir:Null<String> = args.pop();
 
         if (command != null)
-            Sys.println(ANSI.apply(command, [Red, Bold]));
+        {
+            Sys.println(ANSI.apply('Running command $command...', [Red, Bold]));
+
+            switch (command)
+            {
+                // case 'build':
+                default:
+                    Sys.println(ANSI.apply('Unknown command ${ANSI.apply(command, [Underlined])}...', [Red]));
+                    Sys.exit(1);
+            }
+        }
 
         if (runDir != null)
             Sys.println(ANSI.apply(runDir, [Blue, Underline]));
