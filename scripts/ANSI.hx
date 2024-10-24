@@ -6,33 +6,33 @@ package;
 enum abstract ANSICode(String) from String to String
 {
 	// Text colors
-	var Black = '\\x1b[0;30m';
-	var Red = '\\x1b[0;31m';
-	var Green = '\\x1b[0;32m';
-	var Yellow = '\\x1b[0;33m';
-	var Blue = '\\x1b[0;34m';
-	var Magenta = '\\x1b[0;35m';
-	var Cyan = '\\x1b[0;36m';
-	var Gray = '\\x1b[0;37m';
-	var White = '\\x1b[1;37m';
+	var Black = '\033[0;30m';
+	var Red = '\033[0;31m';
+	var Green = '\033[0;32m';
+	var Yellow = '\033[0;33m';
+	var Blue = '\033[0;34m';
+	var Magenta = '\033[0;35m';
+	var Cyan = '\033[0;36m';
+	var Gray = '\033[0;37m';
+	var White = '\033[1;37m';
 
 	// Background colors
-	var BgBlack = '\\x1b[40m';
-	var BgRed = '\\x1b[41m';
-	var BgGreen = '\\x1b[42m';
-	var BgYellow = '\\x1b[43m';
-	var BgBlue = '\\x1b[44m';
-	var BgMagenta = '\\x1b[45m';
-	var BgCyan = '\\x1b[46m';
-	var BgWhite = '\\x1b[47m';
+	var BgBlack = '\033[40m';
+	var BgRed = '\033[41m';
+	var BgGreen = '\033[42m';
+	var BgYellow = '\033[43m';
+	var BgBlue = '\033[44m';
+	var BgMagenta = '\033[45m';
+	var BgCyan = '\033[46m';
+	var BgWhite = '\033[47m';
 
 	// Text styles
-	var Reset = '\\x1b[0m';
-	var Bold = '\\x1b[1m';
-	var Underline = '\\x1b[4m';
-	var Blink = '\\x1b[5m';
-	var Inverse = '\\x1b[7m';
-	var Hidden = '\\x1b[8m';
+	var Reset = '\033[0m';
+	var Bold = '\033[1m';
+	var Underline = '\033[4m';
+	var Blink = '\033[5m';
+	var Inverse = '\033[7m';
+	var Hidden = '\033[8m';
 }
 
 /**
