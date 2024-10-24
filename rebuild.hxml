@@ -1,3 +1,4 @@
 -cp scripts
+-lib hxp
 -main Tools
 -neko run.n
