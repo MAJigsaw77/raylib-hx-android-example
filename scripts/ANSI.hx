@@ -129,6 +129,6 @@ class ANSI
 			}
 		}
 
-		return codesSupported == true ? output : ~/\x1b\[[0-9;]*m/g.replace(output, '');
+		return codesSupported == true ? output : ~/\033\[[0-9;]*m/g.replace(output, '');
 	}
 }
