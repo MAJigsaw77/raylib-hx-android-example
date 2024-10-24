@@ -12,8 +12,8 @@ class Tools
 	public static function main():Void
 	{
 		final args:Array<String> = Sys.args();
-		final command:Null<String> = args.shift();
 		final runDir:Null<String> = args.pop();
+		final command:Null<String> = args.shift();
 
 		if (command != null)
 		{
