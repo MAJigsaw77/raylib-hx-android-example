@@ -21,18 +21,13 @@ class Tools
 			{
 				case 'build':
 					setupNDK();
-
-					Sys.exit(0);
 				default:
 					Sys.println(ANSI.apply('Unknown command ', [Red]) + ANSI.apply(command, [Italic, Red]) + ANSI.apply('...', [Red]));
 					Sys.exit(1);
 			}
 		}
 
-		if (runDir != null)
-			Sys.println(ANSI.apply(runDir, [Blue, Underline]));
-
-		Sys.println(ANSI.apply(args.toString(), [Green, Underline]));
+		Sys.exit(0);
 	}
 
 	private static function setupNDK():Void
