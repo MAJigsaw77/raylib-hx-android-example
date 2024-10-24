@@ -1,11 +1,7 @@
 package;
 
-/**
- * Enum abstract representing ANSI codes for text colors, background colors, and text styles.
- */
 enum abstract ANSICode(String) from String to String
 {
-	// Text colors
 	var Black = '\033[0;30m';
 	var Red = '\033[0;31m';
 	var Green = '\033[0;32m';
@@ -16,7 +12,6 @@ enum abstract ANSICode(String) from String to String
 	var Gray = '\033[0;37m';
 	var White = '\033[1;37m';
 
-	// Background colors
 	var BgBlack = '\033[40m';
 	var BgRed = '\033[41m';
 	var BgGreen = '\033[42m';
@@ -26,13 +21,22 @@ enum abstract ANSICode(String) from String to String
 	var BgCyan = '\033[46m';
 	var BgWhite = '\033[47m';
 
-	// Text styles
 	var Reset = '\033[0m';
 	var Bold = '\033[1m';
+	var Italic = '\033[3m';
 	var Underline = '\033[4m';
+	var Strikethrough = '\033[9m';
+	var DoubleUnderline = '\033[21m';
 	var Blink = '\033[5m';
 	var Inverse = '\033[7m';
 	var Hidden = '\033[8m';
+
+	var BoldOff = '\033[22m';
+	var ItalicOff = '\033[23m';
+	var UnderlineOff = '\033[24m';
+	var BlinkOff = '\033[25m';
+	var InverseOff = '\033[27m';
+	var HiddenOff = '\033[28m';
 }
 
 /**
@@ -68,7 +72,7 @@ class ANSI
 	 * @param codes The ANSI codes to apply.
 	 * @return The styled string.
 	 */
-	public static function apply(input:String, codes:Array<ANSICode>):String
+	public static function apply(input:String, codes:Array<ANSICode>, reset:Bool = true):String
 	{
 		return stripCodes(codes.join('') + input + ANSICode.Reset);
 	}
