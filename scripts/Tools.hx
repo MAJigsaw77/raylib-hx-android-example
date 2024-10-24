@@ -19,7 +19,7 @@ class Tools
             {
                 // case 'build':
                 default:
-                    Sys.println(ANSI.apply('Unknown command ${ANSI.apply(command, [Underline])}...', [Red]));
+                    Sys.println(ANSI.apply('Unknown command ', [Red]) + ANSI.apply(command, [Strikethrough]) + ANSI.apply('...', [Red]));
                     Sys.exit(1);
             }
         }
