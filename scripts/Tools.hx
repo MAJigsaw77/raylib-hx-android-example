@@ -8,6 +8,6 @@ class Tools
     {
         final args:Array<String> = Sys.args();
 
-        Sys.println(ANSI.apply(args.pop(), [Red, Bold]));
+        Sys.println(ANSI.apply(args.pop(), [Red]));
     }
 }
