@@ -1,0 +1,16 @@
+{
+	"name":"raymob-hx",
+	"url":"https://github.com/MAJigsaw77/raymob-hx",
+	"license":"Public",
+	"tags":[],
+	"description":"",
+	"version":"1.0.0",
+	"releasenote":"",
+	"contributors":[
+		"MAJigsaw77"
+	],
+	"classPath":"source",
+	"dependencies":{
+		"hxcpp":""
+	}
+}
